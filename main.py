@@ -33,11 +33,11 @@ class Membership:
     @staticmethod
     def new_member():
         first_name = input("\nEnter your first name: ")
-        last_name = input("\nEnter your last name: ")
-        membership_id = input("\nEnter Membership id: ")
-        status = input("\nEnter membership status (active, inactive), or press enter: " )
+        last_name = input("Enter your last name: ")
+        membership_id = input("Enter Membership id: ")
+        status = input("Enter membership status (active, inactive), or press enter: " )
         if status == "active":
-            status = "active"
+            pass
         else:
             status = "inactive"
 
@@ -85,6 +85,50 @@ class Membership:
             else:
                 print("Invalid input, Try again")
                 Membership.search(member_list)
+            if member_found:
+                print("Members found")
+                for member in member_found:
+                    Membership.member_info(member)
+            else:
+                print("No member found")
+
+
+
+# program logic:
+system_on = True
+while system_on:
+    clear()
+    Membership.menu()
+
+    # Ask user to choose form menu
+    choice = input("what is your choice: ")
+
+    if choice == "1":
+        Membership.add_member()
+        input("\nPress enter to return to the main menu")
+
+    elif choice == "2":
+        if members:
+            for member in members:
+                Membership.member_info(member)
+        else:
+            print("There not members to display")
+        input("\nPress enter to return to the main menu")
+
+    elif choice == "3":
+        if members:
+            Membership.search(members)
+        else:
+            print("\nSorry there is no members to display")
+
+        if input("Do you want to search for another member: (Y/N) ").lower() == "y":
+            Membership.search(members)
+        else:
+            pass
+    elif choice == "4":
+        system_on = False
+    else:
+        print("Invalid input, Try again")
 
 
 
