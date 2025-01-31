@@ -37,11 +37,11 @@ class Membership:
         membership_id = input("Enter Membership id: ")
         status = input("Enter membership status (active, inactive), or press enter: " )
         if status == "active":
-            pass
+            status = "active"
         else:
             status = "inactive"
 
-            return Membership(first_name, last_name, membership_id, status)
+        return Membership(first_name, last_name, membership_id, status)
 
     @staticmethod
     def add_member():
